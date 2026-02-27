@@ -32,22 +32,6 @@ msbuild .\GetEMail.sln /p:Configuration=Release
 3. Projeyi Visual Studio ile açın: `GetEMail.sln`.
 4. `Debug` veya `Release` ile derleyip çalıştırın.
 
-## Güvenlik Denetimi Özeti
-Kod tabanında yapılan taramada aşağıdakiler kontrol edilmiştir:
-- Hardcoded şifre / API anahtarı
-- Gizli token veya bağlantı dizesi
-- Yerel kullanıcı yolu (örn. `C:\Users\...`)
-
-Mevcut sürümde doğrudan gömülü sır bilgisi veya yerel geliştirici yolu bulunmamıştır.
-
-## Kritik Refactoring Önerileri
-1. **`GetEMail/Funcs.cs` içinde boş `catch` blokları kaldırılmalı**
-   - Hata nedenini yutan `catch { return false; }` blokları, teşhisi zorlaştırır.
-2. **`HttpWebRequest` yerine `HttpClient` tercih edilmeli**
-   - Modern API ile kaynak yönetimi ve hata kontrolü iyileşir.
-3. **UI ve iş mantığı ayrıştırılmalı**
-   - `MultiCatcher.cs` içinde tarama/parse işlemleri servis sınıfına taşınarak test edilebilirlik artırılır.
-
 ## Katkı
 Katkı adımları için [CONTRIBUTING.md](./CONTRIBUTING.md) dosyasına bakın.
 
